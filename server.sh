@@ -10,7 +10,7 @@ function rails() {
 	 else
 		PORT="$3"
 	 fi
-     rails server -d -e "$RENV" -p "$PORT"
+     rails server -d -b 0.0.0.0 -e "$RENV" -p "$PORT"
      return 0
   elif [ "$1" = "stop" ]; then
      if [ -f tmp/pids/server.pid ]; then
