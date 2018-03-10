@@ -1,5 +1,5 @@
 class Api::AuthenticationController < Api::ApiController
-  skip_before_filter :authenticate, only: :login
+  skip_before_action :authenticate, only: :login
 
   def login
     user = User.find_by_email(auth_params[:email])
