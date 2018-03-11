@@ -8,7 +8,7 @@ class Api::ApiController < ApplicationController
 
   def current_user
     if jwt_auth_present?
-      @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id] == decoded_data["user_id"]
+      @current_user ||= User.find_by_id(decoded_data["user_id"]) if decoded_data["user_id"]
     end
   end
 

@@ -5,7 +5,6 @@ class Api::AuthenticationController < Api::ApiController
     user = User.find_by_email(auth_params[:email])
 
     if user && user.authenticate(auth_params[:password])
-      session[:user_id] = user.id
       token = JwtAuth.issue({user_id: user.id})
       render_success(:ok, user, meta: { token: token })
     else
